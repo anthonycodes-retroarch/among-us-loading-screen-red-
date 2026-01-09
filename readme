@@ -1,0 +1,13 @@
+Turn it into an EXE (optional but better)
+Install PyInstaller:
+Copy code
+Bash
+pip install pyinstaller
+Build EXE:
+Copy code
+Bash
+pyinstaller --onefile --noconsole amongus_boot.py
+Your file will appear in:
+Copy code
+
+dist/amongus_boot.exe
