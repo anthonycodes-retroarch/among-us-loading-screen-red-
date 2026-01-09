@@ -1,0 +1,6 @@
+Make it run when Windows starts
+Press
+Win + R → type:
+Copy code
+
+shell:startup
