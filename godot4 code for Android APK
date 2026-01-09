@@ -1,0 +1,84 @@
+STEP 1 — Install Godot
+On PC:
+Download Godot 4 from
+👉 https://godotengine.org
+Extract it and run Godot.exe
+STEP 2 — Create the project
+Open Godot
+Click New Project
+Name it:
+AmongUsLoader
+Create projectSTEP 3 — Scene setup 
+Add nodes
+In the Scene panel:
+Node2D (root)
+Add Sprite2D → name it Crewmate
+Add Label → name it LoadingText
+extends Node2D
+
+@export var duration := 5.0
+var time_passed := 0.0
+var angle := 0.0
+
+@onready var crewmate = $Crewmate
+@onready var loading_text = $LoadingText
+
+func _ready():
+	loading_text.text = "Loading"
+	set_process(true)
+
+func _process(delta):
+	time_passed += delta
+	angle += 180 * delta
+
+	# spin crewmate
+	crewmate.rotation = deg_to_rad(angle)
+
+	# loading dots animation
+	var dots = int(Time.get_ticks_msec() / 400) % 4
+	loading_text.text = "Loading" + ".".repeat(dots)
+
+	# auto close after time
+	if time_passed >= duration:
+		get_tree().quit()
+
+
+STEP 6 — Make it fullscreen on mobile
+Go to:
+Project → Project Settings → Display → Window
+Set:
+
+
+Mode: fullscreen
+STEP 7 — Export to APK
+Install Android export tools
+In Godot:
+Editor → Manage Export Templates
+Download templates
+Then:
+Editor → Export → Add Android
+Set:
+
+
+Export format: APK
+Click Export Project
+Save as:
+
+
+amongus_loader.apk
+STEP 8 — Install on your phone
+Send the APK to your phone
+Enable Install unknown apps
+Tap the APK → Install
+Now you have a real Among Us loading screen app on mobile 👾
+What this APK can & can’t do
+✅ What it can do
+Show a fake boot/loading screen
+Look cool
+Be shared with friends
+Be used as a prank/demo
+❌ What Android will NOT allow
+You cannot replace the real phone boot screen
+You cannot run before Android starts
+No app can do that without rooting
+So this is a safe launcher-style loading screen, not a risky system mod.
